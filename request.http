@@ -1,0 +1,14 @@
+@baseURL = http://localhost:5000
+@userURL = /api/v1/users
+@userDocID = /5416254a65d4asda654
+
+GET {{baseURL}} 
+
+### USER URL
+GET {{baseURL}}{{userURL}} 
+
+### GET SPECIFIC USER DOC 
+GET {{baseURL}}{{userURL}}{{userDocID}}
+
+### DELETE SPECIFIC USER DOC 
+DELETE {{baseURL}}{{userURL}}{{userDocID}}
