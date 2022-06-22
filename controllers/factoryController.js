@@ -4,7 +4,7 @@ exports.deleteOne = (Model) =>
     catchAsync(async (req, res, next) => {
         const doc = await Model.findByIdAndDelete(req.params.id);
 
-        if (!doc) return next("No Document found with the provided ID.");
+        if (!doc) return next({ message: "No Document found with the provided ID.", code: 400 });
 
         res.status(204).json({
             status: true,
@@ -18,7 +18,7 @@ exports.updateOne = (Model) =>
             new: true, //this means return new updated document
             runValidators: true, // validate data everytime it change
         });
-        if (!doc) return next("No Document found with the provided ID.");
+        if (!doc) return next({ message: "No Document found with the provided ID.", code: 400 });
 
         res.status(200).json({
             status: true,
@@ -44,7 +44,7 @@ exports.getOne = (Model) =>
     catchAsync(async (req, res, next) => {
         const doc = await Model.findById(req.params.id);
 
-        if (!doc) return next("No Document found with the provided ID.");
+        if (!doc) return next({ message: "No Document found with the provided ID.", code: 400 });
 
         res.status(200).json({
             status: true,
